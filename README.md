@@ -1,99 +1,121 @@
-# 📦 Inventory Management System (Self Project)
+# 📦 Stock Inventory System
 
-This is a robust **Excel-based Inventory Management System** designed and developed as a self project. It enables efficient tracking of stock, credits, debits, and provides real-time inventory summaries using automated calculations and macros.
+An **Excel-based inventory management system** for tracking stock credits and debits and viewing the net stock of every item. It uses formulas and a macro-driven **Update** button to log transactions, so item names, credit and debit totals, and net quantities are all calculated automatically.
 
-> 📊 **B.E. Computer Engineering Project by Siddharth**
-
----
-
-## 🚀 Features
-
-- Centralized item list with unique codes and names
-- Simple data entry for stock credits and debits
-- Automatic calculation of net stock for each item
-- Macro-enabled updates for seamless workflow
-- Real-time summary of inventory status
-- Consistent data across all worksheets
+![Excel](https://img.shields.io/badge/Microsoft%20Excel-217346?logo=microsoftexcel&logoColor=white)
+![VBA](https://img.shields.io/badge/VBA-Macros-blue)
+![Format](https://img.shields.io/badge/Format-.xlsm-green)
+![Type](https://img.shields.io/badge/Type-Self%20Project-lightgrey)
 
 ---
 
-## 🧩 System Structure
+## 📑 Table of Contents
 
-The system consists of three main worksheets:
-
-1. **Sheet2: Item List** – Core of stock management
-2. **Sheet1: Data Entry** – Record stock transactions
-3. **Sheet3: Net Stock Summary** – View current inventory
-
----
-
-## 📋 How to Use
-
-### 1. Update Item List (**Sheet2**)
-
-- Add new items by entering a unique **Item Code** and **Item Name**.
-- This list is referenced throughout the system for consistency.
-
-**Example:**
-
-| Item Code | Item Name  |
-|-----------|------------|
-| 4001      | Product A  |
-| 4002      | Product B  |
+- [Features](#-features)
+- [How It Works](#-how-it-works)
+- [Quick Start](#-quick-start)
+- [How to Use](#-how-to-use)
+- [Repository Contents](#-repository-contents)
+- [Important Notes](#-important-notes)
+- [Author](#-author)
 
 ---
 
-### 2. Record Transactions (**Sheet1**)
+## ✨ Features
 
-- **Item Code:** Select from dropdown (populated from Sheet2).
-- **Item Name:** Auto-filled via VLOOKUP.
-- **Type:** Choose **Credit** (add stock) or **Debit** (remove stock).
-- **Quantity:** Enter the number of items.
-- **Date:** Specify transaction date.
-
-**After entry:** Click the **Update** button to run the macro and log the transaction.
+- 📋 Central item list with unique item codes and names
+- ➕ Simple entry of stock credits (additions) and debits (removals)
+- 🔽 Item code dropdown fed from the item list, and item names filled in automatically
+- 🧮 Net stock per item calculated automatically
+- ⚡ Macro-enabled **Update** button to log each transaction
+- 🔗 Consistent data across all worksheets
 
 ---
 
-### 3. View Net Stock (**Sheet3**)
+## 🧩 How It Works
 
-- **Item Codes/Names:** Auto-populated from Sheet2.
-- **Total Credits/Debits:** Summed from Sheet1 transactions.
-- **Net Quantity:** Calculated as **Credited – Debited** for each item.
-- **Automatic Updates:** Sheet3 reflects all changes instantly.
+The workbook has three worksheets that feed into each other.
+
+| Worksheet | Role |
+|-----------|------|
+| **Items List** | The master list of item codes and names, used by the other sheets |
+| **Sheet1** (Inventory Management Log Book) | Where you record every stock transaction |
+| **Net Stock** | Summary of credits, debits, and the current quantity per item |
+
+```text
+Items List ──► Sheet1 (log book) ──► Net Stock
+ (codes, names)   (credits, debits)     (net quantity)
+```
+
+**Formulas used:** `VLOOKUP` to fetch item names, `IF` to split a quantity into the Credited or Debited column, and `SUMIFS` to total each item's transactions.
 
 ---
 
 ## ⚡ Quick Start
 
-1. **Enable Macros:** Allow macros when opening the file for full functionality.
-2. **Add Items:** Enter new products in Sheet2.
-3. **Log Transactions:** Use Sheet1 to record stock movements.
-4. **Check Inventory:** View up-to-date net stock in Sheet3.
+1. Download `Update and Count.xlsm` from this repository.
+2. Open it in **Microsoft Excel** and click **Enable Content** or **Enable Macros** when prompted.
+3. Add your items to **Items List**.
+4. Log transactions in **Sheet1** and click **Update**.
+5. Open **Net Stock** to see current quantities.
+
+---
+
+## 📋 How to Use
+
+### 1. Update the item list (**Items List**)
+
+Add each product with a unique **Item Code** and an **Item Name**. The other sheets use this list, so keep it current.
+
+| Item Code | Item Name |
+|-----------|-----------|
+| 4001 | Product A |
+| 4002 | Product B |
+
+### 2. Record transactions (**Sheet1**)
+
+| Field | How to fill it |
+|-------|----------------|
+| **Item Code** | Pick from the dropdown (populated from the Items List) |
+| **Item Name** | Filled in automatically with `VLOOKUP` |
+| **Type** | Choose **Credited** (stock added) or **Debited** (stock removed) |
+| **Quantity** | Number of items |
+| **Date** | Transaction date |
+
+The quantity is placed in the **Credited** or **Debited** column according to the type. Then click **Update** to run the macro, which adds the transaction as a new row in the log.
+
+### 3. View net stock (**Net Stock**)
+
+- Item codes and names are pulled from the Items List.
+- Total credits and debits for each item are summed from Sheet1.
+- **Net quantity = Credited − Debited.**
+- The sheet recalculates whenever Sheet1 changes.
+
+---
+
+## 📁 Repository Contents
+
+| File | Description |
+|------|-------------|
+| `Update and Count.xlsm` | The macro-enabled inventory workbook |
+| `Manual.pdf` | User manual (PDF) |
+| `Manual.ipynb` | User manual (notebook) |
+| `how to use.html` | User manual (HTML) |
 
 ---
 
 ## 📝 Important Notes
 
-- Keep **Sheet2** updated for accurate dropdowns and reporting.
-- All calculations and summaries are automated—no manual computation needed.
-- Macros must be enabled for the **Update** button to work.
+- **Macros must be enabled** for the **Update** button to work.
+- Keep the **Items List** accurate, because the dropdowns and the Net Stock sheet depend on it.
+- The workbook needs Microsoft Excel for full macro support.
 
 ---
 
-## 👨‍💻 Author
+## 👤 Author
 
-- **Project by:** Siddharth
-- **Program:** B.E. Computer Engineering
+**Siddharth Acharya**
+B.E. Computer Engineering, Himalaya College of Engineering (HCOE), Tribhuvan University
+GitHub: [@acharya-2226](https://github.com/acharya-2226)
 
----
-
-## 📜 License
-
-This project is open-source and intended for educational and personal use. You may adapt or extend it for your own learning or inventory needs.
-
----
-
-## 🙏 Acknowledgments
-
-Thanks to all mentors and peers for their support and feedback during the development of this project.
+Open for educational and personal use. Feel free to adapt it for your own learning or inventory needs.
